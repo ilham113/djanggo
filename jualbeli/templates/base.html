@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        body{ color:white; }
+    </style>
+    <title>Jual Beli</title>
+</head>
+<body>
+    <div class="container">
+        <div class="col-10 offset-md-1 mt-5">
+            <div class="jumbotron bg-dark">
+                <h1 class="display-4">Transaksi Pembelian Barang</h1>
+                <hr class="my-4 bg-light">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

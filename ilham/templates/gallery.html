@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ judul }} </title>
+</head>
+<body>
+	<img src="{% static 'img/banner_home.png' %} " alt="" style="width: 100%">
+	<h1>ini adalah halaman {{ judul }} </h1>
+	<h3>kontributor: {{ creator }} </h3>
+	<ul>
+		{% for link,name in nav %}
+		<li><a href="{{link}} ">{{name}} </a></li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

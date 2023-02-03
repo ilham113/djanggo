@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+	{{Title }}
+{% endblock title %}
+{% block content %}
+	<h2 align="center" >{{Heading}} </h2>
+	{% for post in Postingan %}
+		<h3>{{post.title}} </h3>
+		<p>{{post.body}} </p>
+	{% endfor %}
+{% endblock content %}

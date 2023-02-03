@@ -1,0 +1,42 @@
+{% extends "student_register/base.html" %}
+
+{% block content %}
+<a href="{% url 'tambah_mahasiswa' %}" class="btn btn-success mb-3">Tambah Data</a>
+ <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Nama</th>
+        <th>NIM</th>
+        <th>Tahun Masuk</th>
+        <th>Prodi</th>
+        <th colspan="2">Aksi </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mhs in siswa %}
+        <tr>
+          <td> {{ mhs.nama }} </td>
+          <td> {{ mhs.nim }} </td>
+          <td> {{ mhs.tahun_masuk }} </td>
+          <td> {{ mhs.prodi}} </td>
+          <td> 
+          	<a href="{% url 'ubah_mahasiswa' mhs.id %}" class="btn btn btn-outline-success">ubah</a>
+          </td>
+          <td>
+          	<form action="{% url 'hapus_mahasiswa' mhs.id %}" method="POST">
+          		{% csrf_token %}
+          		<button type="submit" class="btn btn btn-outline-danger">
+          			Hapus
+          		</button>
+          	</form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="text-right py-2">
+		<a href="/" class="btn btn-success mb-3">HOME</a>
+   </div>
+   
+
+{% endblock content %}

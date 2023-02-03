@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/transaksi" class="btn btn-warning mb-3">Tambah Data</a>
+    <table class="table" style="color: white;">
+        <thead class="thead-light text-center">
+            <tr>
+                <th>Nama Pembeli</th>
+                <th>Alamat</th>
+                <th>Barang</th>
+                <th>Qty</th>
+                <th>Total Bayar</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaksi in daftar_transaksi %}
+            <tr>
+                <td>{{ transaksi.nama_pembeli }}</td>
+                <td>{{ transaksi.alamat }}</td>
+                <td>{{ transaksi.barang }}</td>
+                <td>{{ transaksi.qty }}</td>
+                <td>{{ transaksi.total_bayar }}</td>
+                <td>
+                    <a href="{% url 'ubah' transaksi.id %}" class="btn btn-outline-warning">Ubah</a>
+                    <form action="{%url 'hapus' transaksi.id %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

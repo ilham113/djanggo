@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card" style="background-color: grey;">
+	{% for pict in shelf %}
+	<div class="card"  style="width: 100%;		">
+	    <div class="card-body">
+	    	<nav class="navbar navbar-light bg-light">
+        		<div class="container"> 	
+			    	<a class="navbar-brand" href="#">{{ pict.name }}</a>
+			    	{% if pict.name == user %}
+
+					<ul class="navbar-nav ml-auto">	
+						<li class="nav-item dropdown">
+		        			<a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+		                    options</a>
+		            		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+		            			<a class="dropdown-item" href="update/{{pict.id}}" id = '{{pict.id}}'>Edit</a>
+		                		<a class="dropdown-item" href="delete/{{pict.id}}" id = '{{pict.id}}'>Delete</a>
+		           			</div>        
+		        		</li>
+		        	</ul>
+					{% endif %}
+				</div>
+			</nav>
+		<img class="card-img" src = "{{ pict.picture.url }}">
+	    <p class="card-text">{{ pict.describe }}</p>
+	    <div class="card-footer bg-transparent border-dark">
+	    	<p class="card-title">{{pict.date}}</p>
+		</div>
+	  </div>
+	</div>
+	<br>
+	{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "student_register/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{form.nama|as_crispy_field}}
+		<div class="row">
+			<div class="col-md-6">
+				{{form.nim|as_crispy_field}}
+			</div>
+			<div class="col-md-6">
+				{{form.tahun_masuk|as_crispy_field}}
+			</div>
+		</div>
+		{{form.prodi|as_crispy_field}}
+		<button type="submit" class="btn btn-success">
+			Daftar
+		</button>
+	</form>	
+	
+{% endblock content %}
